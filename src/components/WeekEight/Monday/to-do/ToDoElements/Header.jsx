@@ -9,7 +9,7 @@ const Header = () => {
         justifyContent: "center",
       }}
     >
-      <Typography variant="h1" component="h1" margin={2}>
+      <Typography variant="h4" component="h4" margin={2}>
         To-Do List
       </Typography>
     </Box>

@@ -21,9 +21,7 @@ export const getDateForRoute = (route) => {
   const startDate = new Date("Janaury 16, 2023");
   const [weekStr, dayOfWeek] = route.split("/").slice(1);
 
-  console.log("weekStr", weekStr); // Debug line
   const week = weekLookUp[weekStr];
-  console.log("week", week); // Debug line
 
   const daysToAdd = (week - 1) * 7;
 

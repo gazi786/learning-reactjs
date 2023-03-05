@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Chip, Divider, Typography } from "@mui/material";
 import React from "react";
 
 const TaskList = () => {
@@ -10,8 +10,13 @@ const TaskList = () => {
       }}
     >
       <Typography variant="h6" component="h6" margin={2}>
-        Task List
+        <Divider>
+          <Chip label="Current Tasks" />
+        </Divider>
       </Typography>
+      <Box>
+        <Typography variant="p" component="p" mb={2} ml={2}></Typography>
+      </Box>
     </Box>
   );
 };

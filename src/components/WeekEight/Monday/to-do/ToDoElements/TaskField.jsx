@@ -1,7 +1,18 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, TextField } from "@mui/material";
+import React, { useState } from "react";
 
-const TaskField = () => {
+const TaskField = ({ addTaskToArray }) => {
+  const [task, setTask] = useState("");
+  const changeTask = (e) => setTask(e.target.value);
+  const submitTask = (e) => {
+    e.preventDefault();
+    if (task.length > 0) {
+      addTaskToArray(task);
+      console.log(task);
+    } else {
+      alert("Please enter a task");
+    }
+  };
   return (
     <Box
       sx={{
@@ -9,9 +20,30 @@ const TaskField = () => {
         justifyContent: "center",
       }}
     >
-      <Typography variant="h6" component="h6" margin={2}>
-        Task Field
-      </Typography>
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { m: 1, width: "25ch" },
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+        noValidate
+        autoComplete="off"
+        onSubmit={submitTask}
+      >
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          placeholder="Add your task"
+          value={task}
+          onChange={changeTask}
+        />
+        <Button variant="contained" type="submit">
+          Add Task
+        </Button>
+      </Box>
     </Box>
   );
 };

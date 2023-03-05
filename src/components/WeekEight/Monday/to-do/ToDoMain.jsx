@@ -1,12 +1,21 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Box, Container, Typography } from "@mui/material";
+import React, { useState } from "react";
 import Header from "./ToDoElements/Header";
 import TaskField from "./ToDoElements/TaskField";
 import TaskList from "./ToDoElements/TaskList";
 
 const ToDoMain = () => {
+  const [tasksArray, setTasksArray] = useState([]);
+
+  const addTaskToArray = (task) => {
+    setTasksArray([...tasksArray, task]);
+  };
   return (
-    <Box sx={{ pt: 3 }}>
+    <Box
+      sx={{
+        pt: 3,
+      }}
+    >
       <Container>
         <Box>
           <Typography variant="h6" component="h6" margin={2}>
@@ -20,16 +29,26 @@ const ToDoMain = () => {
         </Box>
         <Box
           sx={{
-            border: "solid 1px black",
-            width: "100%",
-            minWidth: "30rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Stack direction="column" spacing={2}>
+          <Box
+            sx={{
+              border: "solid",
+              borderColor: "primary.main",
+              borderRadius: "1rem",
+              padding: "1rem",
+              borderWidth: "1px",
+              width: "100%",
+              maxWidth: "32rem",
+            }}
+          >
             <Header />
-            <TaskField />
-            <TaskList />
-          </Stack>
+            <TaskField addTaskToArray={addTaskToArray} />
+            <TaskList tasksArray={tasksArray} />
+          </Box>
         </Box>
       </Container>
     </Box>
