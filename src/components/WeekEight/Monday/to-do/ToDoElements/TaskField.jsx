@@ -8,7 +8,7 @@ const TaskField = ({ addTaskToArray }) => {
     e.preventDefault();
     if (task.length > 0) {
       addTaskToArray(task);
-      console.log(task);
+      setTask(""); // Clear the text field
     } else {
       alert("Please enter a task");
     }

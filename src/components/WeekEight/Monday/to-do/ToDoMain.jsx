@@ -10,6 +10,11 @@ const ToDoMain = () => {
   const addTaskToArray = (task) => {
     setTasksArray([...tasksArray, task]);
   };
+
+  const deleteTaskFromArray = (taskToDelete) => {
+    setTasksArray(tasksArray.filter((task) => task !== taskToDelete));
+  };
+
   return (
     <Box
       sx={{
@@ -47,7 +52,10 @@ const ToDoMain = () => {
           >
             <Header />
             <TaskField addTaskToArray={addTaskToArray} />
-            <TaskList tasksArray={tasksArray} />
+            <TaskList
+              tasksArray={tasksArray}
+              deleteTaskFromArray={deleteTaskFromArray}
+            />
           </Box>
         </Box>
       </Container>
