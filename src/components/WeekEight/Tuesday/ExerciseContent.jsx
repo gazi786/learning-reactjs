@@ -1,7 +1,9 @@
+import MaterialUI from "./MaterialUI/MaterialUI";
+
 const ExerciseContent = ({ currentExerciseIndex }) => {
   switch (currentExerciseIndex) {
     case 0:
-      return;
+      return <MaterialUI />;
     case 1:
       return;
     default:

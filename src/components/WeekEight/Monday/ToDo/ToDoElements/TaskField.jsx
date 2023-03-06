@@ -2,17 +2,19 @@ import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 const TaskField = ({ addTaskToArray }) => {
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState({ id: 1, name: "Example task" });
   const changeTask = (e) => setTask(e.target.value);
+
   const submitTask = (e) => {
     e.preventDefault();
     if (task.length > 0) {
-      addTaskToArray(task);
+      addTaskToArray(task); // Pass the task to the function
       setTask(""); // Clear the text field
     } else {
       alert("Please enter a task");
     }
   };
+
   return (
     <Box
       sx={{

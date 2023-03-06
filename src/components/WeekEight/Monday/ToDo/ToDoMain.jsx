@@ -8,11 +8,12 @@ const ToDoMain = () => {
   const [tasksArray, setTasksArray] = useState([]);
 
   const addTaskToArray = (task) => {
-    setTasksArray([...tasksArray, task]);
+    const id = tasksArray.length ? tasksArray[tasksArray.length - 1].id + 1 : 1;
+    setTasksArray([...tasksArray, { id: id, name: task }]);
   };
 
   const deleteTaskFromArray = (taskToDelete) => {
-    setTasksArray(tasksArray.filter((task) => task !== taskToDelete));
+    setTasksArray(tasksArray.filter((task) => task.id !== taskToDelete));
   };
 
   return (

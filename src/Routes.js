@@ -9,12 +9,16 @@ import WeekSeven from "./components/WeekSeven/WeekSeven";
 import WeekSevenThursday from "./components/WeekSeven/Thursday/Thursday";
 import WkSevenThursEx1 from "./components/WeekSeven/Thursday/EventsCondRendering/EventsRendering";
 import WkSevenThursEx2 from "./components/WeekSeven/Thursday/LiftingState/LiftingStateUp";
+
 import WeekSevenFriday from "./components/WeekSeven/Friday/Friday";
 import WkSevenFriEx1 from "./components/WeekSeven/Friday/ReactRouter/ReactRouter";
 
 // Week 8
 import WeekEight from "./components/WeekEight/WeekEight";
 import WeekEightMonday from "./components/WeekEight/Monday/Monday";
+import WkEightMonEx1 from "./components/WeekEight/Monday/ToDo/ToDoMain";
+import WkEightMonEx2 from "./components/WeekEight/Monday/ArvoClass/ShoppingListIndex";
+
 import WeekEightTuesday from "./components/WeekEight/Tuesday/Tuesday";
 import WeekEightWednesday from "./components/WeekEight/Wednesday/Wednesday";
 import WeekEightThursday from "./components/WeekEight/Thursday/Thursday";
@@ -41,7 +45,12 @@ const RoutesStore = () => {
 			</Route>
 			{/* Week 8 Routes */}
 			<Route path="/week-eight/*" element={<WeekEight linkRoutes={linkRoutes} />} />
-			<Route path="/week-eight/monday" element={<WeekEightMonday linkRoutes={linkRoutes} />}></Route>
+			{/* Monday Routes */}
+			<Route path="/week-eight/monday" element={<WeekEightMonday linkRoutes={linkRoutes} />}>
+				<Route path="/week-eight/monday/" element={<WeekEightMonday />} />
+				<Route path="exercise1" element={<WkEightMonEx1 />} />
+				<Route path="exercise2" element={<WkEightMonEx2 />} />
+			</Route>
 			<Route path="/week-eight/tuesday" element={<WeekEightTuesday linkRoutes={linkRoutes} />}></Route>
 			<Route path="/week-eight/wednesday" element={<WeekEightWednesday linkRoutes={linkRoutes} />}></Route>
 			<Route path="/week-eight/thursday" element={<WeekEightThursday linkRoutes={linkRoutes} />}></Route>
