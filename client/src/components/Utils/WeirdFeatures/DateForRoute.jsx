@@ -18,7 +18,7 @@ const weekLookUp = {
 };
 
 export const getDateForRoute = (route) => {
-  const startDate = new Date("Janaury 16, 2023");
+  const startDate = new Date("January 16, 2023");
   const [weekStr, dayOfWeek] = route.split("/").slice(1);
 
   const week = weekLookUp[weekStr];

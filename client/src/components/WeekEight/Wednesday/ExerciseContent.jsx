@@ -1,7 +1,9 @@
+import ShowTell from "./ShowTell";
+
 const ExerciseContent = ({ currentExerciseIndex }) => {
   switch (currentExerciseIndex) {
     case 0:
-      return;
+      return <ShowTell />;
     case 1:
       return;
     default:

@@ -5,7 +5,7 @@ import { StyledLinkNav } from "./StyledElements";
 import classnames from "classnames";
 
 const isActive = (match, location) => {
-  return location.pathname === match.path;
+  return location.pathname.startsWith(match.path);
 };
 
 const DayNavigator = ({ linkRoutes, location, weekPath }) => {

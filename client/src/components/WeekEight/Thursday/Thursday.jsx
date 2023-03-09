@@ -8,6 +8,7 @@ import DisplayDate from "../../Utils/WeirdFeatures/DisplayDate";
 
 const exercises = [
   { path: "/week-eight/thursday/exercise1", label: "Exercise 1" },
+  { path: "/week-eight/thursday/exercise2", label: "Exercise 2" },
 ];
 
 const Thursday = ({ linkRoutes }) => {
