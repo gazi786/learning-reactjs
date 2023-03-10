@@ -1,8 +1,21 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const WeatherDisplay = ({ weatherData, hasError, errorMessage, cityName }) => {
-  if (!weatherData || Object.keys(weatherData).length === 0) {
+  const [showData, setShowData] = useState(false);
+
+  useEffect(() => {
+    if (!hasError && weatherData && Object.keys(weatherData).length > 0) {
+      setShowData(true);
+    } else {
+      const timer = setTimeout(() => {
+        setShowData(false);
+      }, 1000); // set delay for 3 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [weatherData, hasError]);
+
+  if (!showData) {
     if (hasError) {
       return (
         <Box
@@ -19,33 +32,40 @@ const WeatherDisplay = ({ weatherData, hasError, errorMessage, cityName }) => {
             lineHeight: "2rem",
           }}
         >
-          <Typography color="error" variant="subtitle1" mb={1}>
+          <Typography
+            variant="subtitle1"
+            mb={1}
+            sx={{ color: "white", textShadow: "1px 1px 2px red" }}
+          >
             Error: {cityName.toUpperCase()} is not a valid city name.{" "}
             {cityName.toUpperCase()} - {errorMessage}
           </Typography>
         </Box>
       );
     } else {
-      return (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            border: "solid",
-            backgroundColor: "#1F2833",
-            color: "white",
-            borderRadius: "1rem",
-            padding: "1rem",
-            lineHeight: "2rem",
-          }}
-        >
-          <Typography variant="subtitle1" mb={1}>
-            No data available.
-          </Typography>
-        </Box>
-      );
+      if (errorMessage === "" || errorMessage === undefined) {
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              border: "solid",
+              backgroundColor: "#1F2833",
+              color: "white",
+              borderRadius: "1rem",
+              padding: "1rem",
+              lineHeight: "2rem",
+            }}
+          >
+            <Typography variant="subtitle1" mb={1}>
+              No data available. Please enter a city name and click on the
+              button..!!!
+            </Typography>
+          </Box>
+        );
+      }
     }
   } else {
     const { name, sys, main, weather, wind } = weatherData;

@@ -3,13 +3,18 @@ import React, { useState } from "react";
 import WeatherDisplay from "./WeatherElements/TheWeatherDisplay";
 
 const TheWeatherAPI = () => {
-  const [weatherInfo, setWeatherInfo] = useState({});
+  const [weatherInfo, setWeatherInfo] = useState("");
   const [cityName, setCityName] = useState("");
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (event) => {
     setCityName(event.target.value);
+    if (event.target.value.trim() === "") {
+      setWeatherInfo(""); // Clear the weatherInfo state
+      setHasError(false);
+      setErrorMessage("");
+    }
   };
 
   const submitCity = (e) => {
@@ -92,6 +97,7 @@ const TheWeatherAPI = () => {
               id="outlined-required"
               label="Required"
               placeholder="Enter City Name"
+              value={cityName}
               onChange={handleChange}
             />
             <Button variant="contained" type="submit">
