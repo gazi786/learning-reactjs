@@ -1,6 +1,7 @@
 const http = require('http');
+const main = require('./modules/mailer');
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
 	if (req.url === '/' || req.url === '/home' || req.url === '/index') {
 		res.setHeader('Content-Type', 'text/html');
 		res.write('<html>');
@@ -29,6 +30,19 @@ const server = http.createServer((req, res) => {
 		res.write(JSON.stringify(userList, null, 2));
 		res.end();
 	}
+	else if (req.url === '/api/sendEmail') {
+
+		res.setHeader('Content-Type', 'text/plain');
+		try {
+			await main();
+			res.write('Email sent successfully');
+		} catch (error) {
+			console.error(error);
+			res.statusCode = 500;
+			res.write('Error sending email');
+		}
+		res.end();
+	}
 	else {
 		res.statusCode = 404;
 		res.setHeader('Content-Type', 'text/plain');
@@ -39,4 +53,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(4000, 'localhost', () => {
 	console.log('listening for requests on port 4000');
+	// main().catch(console.error);
 });

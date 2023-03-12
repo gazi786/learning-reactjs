@@ -1,8 +1,17 @@
 {
+  "name": "learning-backend-node",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Alshafaraz Gazi",
+  "license": "ISC",
+  "description": "",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon src/server.js"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "nodemailer": "^6.9.1",
     "nodemon": "^2.0.21"
   }
 }
