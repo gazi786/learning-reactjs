@@ -1,9 +1,8 @@
-"use strict";
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 
 // async..await is not allowed in global scope, must use a wrapper
-async function main() {
+async function mailer() {
 	// Generate test SMTP service account from  Mission Ready.email
 	// Only needed if you don't have a real mail account for testing
 	let testAccount = await nodemailer.createTestAccount();
@@ -28,6 +27,7 @@ async function main() {
 			<p>I am sending this email transport through the API on my server (Calling url in my browser => http://localhost:4000/api/sendEmail).</p>
 			<p>If you receiving this then know that my multiple if/else if/else statements are working...!!!</p>
 			<p>This text has been written with html body tags...</p>
+			<p>The Current Time is : ${Date().toLocaleString()}</p>
 			<p><img src='https://media.tenor.com/-lXKZdnfhZ4AAAAC/tenor.gif' alt='Hurray Gif'></p>`,// html body
 	};
 
@@ -41,4 +41,4 @@ async function main() {
 	// Preview URL: https:// Mission Ready.email/message/WaQKMgKddxQDoou...
 }
 
-module.exports = main;
+module.exports = mailer;

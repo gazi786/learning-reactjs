@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Student Data</title>
+</head>
+
+<body>
+	<div id="root"></div>
+	<script>
+		fetch('http://localhost:4000/studentData')
+			.then(response => response.json())
+			.then(data => {
+				const root = document.getElementById('root');
+				for (const student of Object.values(data)) {
+					const studentElement = document.createElement('div');
+					studentElement.innerHTML = `<h1>${student.name}</h1><p>Age: ${student.age}</p>`;
+					root.appendChild(studentElement);
+				}
+			})
+			.catch(error => console.error(error));
+	</script>
+</body>
+
+</html>
