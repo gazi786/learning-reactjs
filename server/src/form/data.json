@@ -1,0 +1,14 @@
+[
+	{"user":{
+		"id": 1,
+		"email": "alshafarazg@gmail.com",
+		"password": "1234567"
+	}
+	},
+	{"user":{
+		"id": 2,
+		"email": "alshafarazg@missionreadyhq.com",
+		"password":"123456"
+	}
+	}
+]
