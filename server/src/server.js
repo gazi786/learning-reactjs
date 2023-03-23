@@ -7,8 +7,8 @@ const port = process.env.PORT || 4000;
 
 // const app = require('./modules/statusCodes');
 // const app = require('./studentData/student');
-
-const app = require('./form/form');
+// const app = require('./form/form');
+const app = require('./form/formWithFetch');
 
 app.listen(port, () => {
 	console.log(`Server listening on port ${port}`);

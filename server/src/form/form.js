@@ -37,10 +37,25 @@ app.post("/login", (req, res) => {
 
 		// Check if email already exists in data
 		const existingUser = Object.values(data).find(user => user.email === email);
-		if (existingUser) {
-			console.log("Email already exists");
-			return res.status(400).send("Email already exists");
+		if (!existingUser || existingUser.password !== password) {
+			console.log("Invalid email or password");
+			return res.status(400).send("Invalid email or password");
 		}
+		console.log("Login successful");
+		res.redirect('http://127.0.0.1:5500/server/dist/form/loggedIn.html', target = '_blank');
+	});
+});
+
+app.post("/register", (req, res) => {
+	const { email, password } = req.body;
+
+	jsonReader("./data.json", (err, data) => {
+		if (err) {
+			console.log(err);
+			return res.status(500).send("Error reading file");
+		}
+
+		console.log("Data read from file:", data);
 
 		console.log("Email is new, creating new user");
 
